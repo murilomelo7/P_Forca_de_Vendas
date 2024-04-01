@@ -14,6 +14,7 @@ object frmClientes: TfrmClientes
     Size.Width = 274.000000000000000000
     Size.Height = 480.000000000000000000
     Size.PlatformDefault = False
+    StyleLookup = 'TabControl1Style1'
     TabIndex = 0
     TabOrder = 1
     TabPosition = None
@@ -108,7 +109,7 @@ object frmClientes: TfrmClientes
         Size.Height = 399.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 3
-        object ListView1: TListView
+        object ListViewClientes: TListView
           ItemAppearanceClassName = 'TDynamicAppearance'
           ItemEditAppearanceClassName = 'TDynamicAppearance'
           HeaderAppearanceClassName = 'TListHeaderObjects'
@@ -148,7 +149,7 @@ object frmClientes: TfrmClientes
               AppearanceObjectName = 'Text1'
               AppearanceClassName = 'TTextObjectAppearance'
             end>
-          OnItemClickEx = ListView1ItemClickEx
+          OnItemClickEx = ListViewClientesItemClickEx
         end
       end
     end
@@ -418,10 +419,9 @@ object frmClientes: TfrmClientes
   end
   object FDConnection1: TFDConnection
     Params.Strings = (
-      
-        'Database=C:\Users\Matheus\Documents\GitHub\Projeto Forca de vend' +
-        'as (delphi)\P_Forca_de_Vendas\Banco\banco-univel'
+      'Database=D:\projeto_delphi\P_Forca_de_Vendas\Banco\banco-univel'
       'DriverID=SQLite')
+    Connected = True
     LoginPrompt = False
     Left = 120
     Top = 145

@@ -26,5 +26,6 @@ object frm_Principal: Tfrm_Principal
     Size.PlatformDefault = False
     TabOrder = 2
     Text = 'Produtos'
+    OnClick = btnProdutosClick
   end
 end

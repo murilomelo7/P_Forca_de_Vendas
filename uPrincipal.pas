@@ -12,6 +12,7 @@ type
     btnClientes: TButton;
     btnProdutos: TButton;
     procedure btnClientesClick(Sender: TObject);
+    procedure btnProdutosClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -25,7 +26,8 @@ implementation
 
 {$R *.fmx}
 
-uses uClientes;
+uses uClientes,
+     uProdutos;
 
 procedure Tfrm_Principal.btnClientesClick(Sender: TObject);
 VAR v_Teste : string;
@@ -33,6 +35,11 @@ begin
 
   frmClientes.Show;
 
+end;
+
+procedure Tfrm_Principal.btnProdutosClick(Sender: TObject);
+begin
+  frmProdutos.Show;
 end;
 
 end.
