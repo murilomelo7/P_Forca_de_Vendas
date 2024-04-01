@@ -121,9 +121,9 @@ object frmProdutos: TfrmProdutos
             item
               AppearanceObjectName = 'txtNomeProduto'
               AppearanceClassName = 'TTextObjectAppearance'
-              Appearance.Width = 136.000000000000000000
+              Appearance.Width = 113.000000000000000000
               Appearance.Height = 33.000000000000000000
-              Appearance.PlaceOffset.X = 70.000000000000000000
+              Appearance.PlaceOffset.X = 54.000000000000000000
               Appearance.PlaceOffset.Y = 8.000000000000000000
             end
             item
@@ -131,15 +131,23 @@ object frmProdutos: TfrmProdutos
               AppearanceClassName = 'TTextObjectAppearance'
               Appearance.Width = 49.000000000000000000
               Appearance.Height = 36.000000000000000000
-              Appearance.PlaceOffset.X = 6.000000000000000000
+              Appearance.PlaceOffset.X = -2.000000000000000000
               Appearance.PlaceOffset.Y = 8.000000000000000000
             end
             item
               AppearanceObjectName = 'txtPrecoProduto'
               AppearanceClassName = 'TTextObjectAppearance'
-              Appearance.Width = 15.000000000000000000
+              Appearance.Width = 23.000000000000000000
               Appearance.Height = 20.000000000000000000
-              Appearance.PlaceOffset.X = 224.000000000000000000
+              Appearance.PlaceOffset.X = 176.000000000000000000
+              Appearance.PlaceOffset.Y = 16.000000000000000000
+            end
+            item
+              AppearanceObjectName = 'txtEstoqueProduto'
+              AppearanceClassName = 'TTextObjectAppearance'
+              Appearance.Width = 23.000000000000000000
+              Appearance.Height = 20.000000000000000000
+              Appearance.PlaceOffset.X = 216.000000000000000000
               Appearance.PlaceOffset.Y = 16.000000000000000000
             end>
           ItemAppearanceObjects.ItemEditObjects.ObjectsCollection = <
@@ -201,12 +209,12 @@ object frmProdutos: TfrmProdutos
         TextSettings.Font.Size = 16.000000000000000000
         TextSettings.Font.StyleExt = {00060000000000000004000000}
         Text = 'Codigo:'
-        TabOrder = 3
+        TabOrder = 4
       end
       object edt_Codigo: TEdit
         Touch.InteractiveGestures = [LongTap, DoubleTap]
         Align = Top
-        TabOrder = 6
+        TabOrder = 8
         Position.Y = 73.000000000000000000
         Size.Width = 273.000000000000000000
         Size.Height = 32.000000000000000000
@@ -222,12 +230,12 @@ object frmProdutos: TfrmProdutos
         TextSettings.Font.Size = 16.000000000000000000
         TextSettings.Font.StyleExt = {00060000000000000004000000}
         Text = 'Nome:'
-        TabOrder = 2
+        TabOrder = 3
       end
       object edt_Nome: TEdit
         Touch.InteractiveGestures = [LongTap, DoubleTap]
         Align = Top
-        TabOrder = 5
+        TabOrder = 7
         Position.Y = 137.000000000000000000
         Size.Width = 273.000000000000000000
         Size.Height = 32.000000000000000000
@@ -243,12 +251,12 @@ object frmProdutos: TfrmProdutos
         TextSettings.Font.Size = 16.000000000000000000
         TextSettings.Font.StyleExt = {00060000000000000004000000}
         Text = 'Pre'#231'o:'
-        TabOrder = 1
+        TabOrder = 2
       end
       object edt_Preco: TEdit
         Touch.InteractiveGestures = [LongTap, DoubleTap]
         Align = Top
-        TabOrder = 4
+        TabOrder = 6
         Position.Y = 201.000000000000000000
         Size.Width = 273.000000000000000000
         Size.Height = 32.000000000000000000
@@ -256,11 +264,11 @@ object frmProdutos: TfrmProdutos
       end
       object Layout5: TLayout
         Align = Top
-        Position.Y = 233.000000000000000000
+        Position.Y = 297.000000000000000000
         Size.Width = 273.000000000000000000
         Size.Height = 50.000000000000000000
         Size.PlatformDefault = False
-        TabOrder = 7
+        TabOrder = 9
         object btn_Salvar: TSpeedButton
           Align = Center
           StyledSettings = [Family, Style, FontColor]
@@ -271,6 +279,27 @@ object frmProdutos: TfrmProdutos
           TextSettings.Font.Size = 22.000000000000000000
           OnClick = btn_SalvarClick
         end
+      end
+      object Label10: TLabel
+        Align = Top
+        StyledSettings = [Family, FontColor]
+        Position.Y = 233.000000000000000000
+        Size.Width = 273.000000000000000000
+        Size.Height = 32.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Font.Size = 16.000000000000000000
+        TextSettings.Font.StyleExt = {00060000000000000004000000}
+        Text = 'Estoque:'
+        TabOrder = 1
+      end
+      object edt_Estoque: TEdit
+        Touch.InteractiveGestures = [LongTap, DoubleTap]
+        Align = Top
+        TabOrder = 5
+        Position.Y = 265.000000000000000000
+        Size.Width = 273.000000000000000000
+        Size.Height = 32.000000000000000000
+        Size.PlatformDefault = False
       end
     end
     object tbEditar: TTabItem
@@ -328,12 +357,12 @@ object frmProdutos: TfrmProdutos
           TextSettings.Font.Size = 16.000000000000000000
           TextSettings.Font.StyleExt = {00060000000000000004000000}
           Text = 'Codigo: '
-          TabOrder = 2
+          TabOrder = 3
         end
         object edt_Codigo_edicao: TEdit
           Touch.InteractiveGestures = [LongTap, DoubleTap]
           Align = Top
-          TabOrder = 5
+          TabOrder = 7
           Position.Y = 33.000000000000000000
           Enabled = False
           Size.Width = 273.000000000000000000
@@ -355,7 +384,7 @@ object frmProdutos: TfrmProdutos
         object edt_nome_edicao: TEdit
           Touch.InteractiveGestures = [LongTap, DoubleTap]
           Align = Top
-          TabOrder = 4
+          TabOrder = 6
           Position.Y = 90.000000000000000000
           Size.Width = 273.000000000000000000
           Size.Height = 24.000000000000000000
@@ -364,19 +393,19 @@ object frmProdutos: TfrmProdutos
         object Label9: TLabel
           Align = Top
           StyledSettings = [Family, FontColor]
-          Position.Y = 114.000000000000000000
+          Position.Y = 171.000000000000000000
           Size.Width = 273.000000000000000000
           Size.Height = 33.000000000000000000
           Size.PlatformDefault = False
           TextSettings.Font.Size = 16.000000000000000000
           TextSettings.Font.StyleExt = {00060000000000000004000000}
-          Text = 'Pre'#231'o:'
-          TabOrder = 1
+          Text = 'Estoque:'
+          TabOrder = 2
         end
         object edt_preco_edicao: TEdit
           Touch.InteractiveGestures = [LongTap, DoubleTap]
           Align = Top
-          TabOrder = 3
+          TabOrder = 5
           Position.Y = 147.000000000000000000
           Size.Width = 273.000000000000000000
           Size.Height = 24.000000000000000000
@@ -389,11 +418,11 @@ object frmProdutos: TfrmProdutos
           Margins.Right = 5.000000000000000000
           Margins.Bottom = 5.000000000000000000
           Position.X = 5.000000000000000000
-          Position.Y = 176.000000000000000000
+          Position.Y = 233.000000000000000000
           Size.Width = 263.000000000000000000
           Size.Height = 30.000000000000000000
           Size.PlatformDefault = False
-          TabOrder = 6
+          TabOrder = 8
           Text = 'Salvar'
           OnClick = btn_salvar_edicaClick
         end
@@ -404,13 +433,34 @@ object frmProdutos: TfrmProdutos
           Margins.Right = 5.000000000000000000
           Margins.Bottom = 5.000000000000000000
           Position.X = 5.000000000000000000
-          Position.Y = 216.000000000000000000
+          Position.Y = 273.000000000000000000
           Size.Width = 263.000000000000000000
           Size.Height = 30.000000000000000000
           Size.PlatformDefault = False
-          TabOrder = 7
+          TabOrder = 9
           Text = 'Deletar'
           OnClick = btnDeletarClick
+        end
+        object Label11: TLabel
+          Align = Top
+          StyledSettings = [Family, FontColor]
+          Position.Y = 114.000000000000000000
+          Size.Width = 273.000000000000000000
+          Size.Height = 33.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 16.000000000000000000
+          TextSettings.Font.StyleExt = {00060000000000000004000000}
+          Text = 'Pre'#231'o:'
+          TabOrder = 1
+        end
+        object edt_Estoque_edicao: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          Align = Top
+          TabOrder = 4
+          Position.Y = 204.000000000000000000
+          Size.Width = 273.000000000000000000
+          Size.Height = 24.000000000000000000
+          Size.PlatformDefault = False
         end
       end
     end

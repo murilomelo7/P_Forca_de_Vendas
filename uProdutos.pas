@@ -68,6 +68,11 @@ type
     edt_Estoque: TEdit;
     Label11: TLabel;
     edt_Estoque_edicao: TEdit;
+    Layout8: TLayout;
+    Label12: TLabel;
+    Label13: TLabel;
+    Label14: TLabel;
+    Label15: TLabel;
     procedure atualizaProdutosdoBanco();
     procedure insereProdutonaLista(produto: TProdutos);
     procedure editaProdutoBanco(produto: TProdutos);

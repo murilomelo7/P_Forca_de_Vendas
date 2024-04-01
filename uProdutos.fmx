@@ -104,7 +104,7 @@ object frmProdutos: TfrmProdutos
       object Layout3: TLayout
         Align = Client
         Size.Width = 273.000000000000000000
-        Size.Height = 399.000000000000000000
+        Size.Height = 367.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 3
         object ListViewProdutos: TListView
@@ -114,7 +114,7 @@ object frmProdutos: TfrmProdutos
           FooterAppearanceClassName = 'TListHeaderObjects'
           Align = Client
           Size.Width = 273.000000000000000000
-          Size.Height = 399.000000000000000000
+          Size.Height = 367.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 0
           ItemAppearanceObjects.ItemObjects.ObjectsCollection = <
@@ -156,6 +156,50 @@ object frmProdutos: TfrmProdutos
               AppearanceClassName = 'TTextObjectAppearance'
             end>
           OnItemClickEx = ListViewProdutosItemClickEx
+        end
+      end
+      object Layout8: TLayout
+        Align = Top
+        Position.Y = 81.000000000000000000
+        Size.Width = 273.000000000000000000
+        Size.Height = 32.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 4
+        object Label12: TLabel
+          Position.X = 16.000000000000000000
+          Position.Y = 8.000000000000000000
+          Size.Width = 33.000000000000000000
+          Size.Height = 17.000000000000000000
+          Size.PlatformDefault = False
+          Text = 'C'#243'd:'
+          TabOrder = 3
+        end
+        object Label13: TLabel
+          Position.X = 94.000000000000000000
+          Position.Y = 4.000000000000000000
+          Size.Width = 57.000000000000000000
+          Size.Height = 24.000000000000000000
+          Size.PlatformDefault = False
+          Text = 'Nome:'
+          TabOrder = 2
+        end
+        object Label14: TLabel
+          Position.X = 171.000000000000000000
+          Position.Y = 4.000000000000000000
+          Size.Width = 57.000000000000000000
+          Size.Height = 24.000000000000000000
+          Size.PlatformDefault = False
+          Text = 'Pre'#231'o:'
+          TabOrder = 1
+        end
+        object Label15: TLabel
+          Position.X = 225.000000000000000000
+          Position.Y = 4.000000000000000000
+          Size.Width = 48.000000000000000000
+          Size.Height = 24.000000000000000000
+          Size.PlatformDefault = False
+          Text = 'Estoque:'
+          TabOrder = 0
         end
       end
     end

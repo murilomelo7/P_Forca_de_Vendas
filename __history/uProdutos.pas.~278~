@@ -104,14 +104,14 @@ var
 begin
   FDQProdutos.Close;
   FDQProdutos.SQL.Clear;
-  FDQProdutos.SQL.Add('select * from produtos;');
+  FDQProdutos.SQL.Add('select * from produtos');
 
-if edtPesquisa.Text <> '' then
-begin
-  FDQProdutos.SQL.Add('where nome like :pesquisa or preco like :pesquisa');
-  FDQProdutos.ParamByName('pesquisa').AsString := '%' + edtPesquisa.Text + '%';
-end;
-
+  if edtPesquisa.Text <> '' then
+  begin
+   ShowMessage('asd.');
+    FDQProdutos.SQL.Add('where nome like :pesquisa or preco = :pesquisa');
+    FDQProdutos.ParamByName('pesquisa').AsString := edtPesquisa.Text;
+  end;
 
   FDQProdutos.Open();
 
