@@ -141,6 +141,10 @@ object frmProdutos: TfrmProdutos
               Appearance.Height = 20.000000000000000000
               Appearance.PlaceOffset.X = 224.000000000000000000
               Appearance.PlaceOffset.Y = 16.000000000000000000
+            end
+            item
+              AppearanceObjectName = 'txtEstoqueProduto'
+              AppearanceClassName = 'TTextObjectAppearance'
             end>
           ItemAppearanceObjects.ItemEditObjects.ObjectsCollection = <
             item
@@ -410,6 +414,7 @@ object frmProdutos: TfrmProdutos
           Size.PlatformDefault = False
           TabOrder = 7
           Text = 'Deletar'
+          OnClick = btnDeletarClick
         end
       end
     end

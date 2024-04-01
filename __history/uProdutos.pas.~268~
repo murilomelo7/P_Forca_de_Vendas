@@ -22,6 +22,7 @@ type
     codigo: Integer;
     nome: String;
     preco: Double;
+    estoque: Integer;
   end;
 
   TfrmProdutos = class(TForm)
@@ -63,6 +64,10 @@ type
     FDConnection1: TFDConnection;
     FDQProdutos: TFDQuery;
     ListViewProdutos: TListView;
+    Label10: TLabel;
+    edt_Estoque: TEdit;
+    Label11: TLabel;
+    edt_Estoque_edicao: TEdit;
     procedure atualizaProdutosdoBanco();
     procedure insereProdutonaLista(produto: TProdutos);
     procedure editaProdutoBanco(produto: TProdutos);
@@ -79,6 +84,7 @@ type
       const ItemObject: TListItemDrawable);
     function buscarProdutonoBanco(id_produto: Integer): TProdutos;
     procedure btn_salvar_edicaClick(Sender: TObject);
+    procedure btnDeletarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -100,6 +106,13 @@ begin
   FDQProdutos.SQL.Clear;
   FDQProdutos.SQL.Add('select * from produtos;');
 
+if edtPesquisa.Text <> '' then
+begin
+  FDQProdutos.SQL.Add('where nome like :pesquisa or preco like :pesquisa');
+  FDQProdutos.ParamByName('pesquisa').AsString := '%' + edtPesquisa.Text + '%';
+end;
+
+
   FDQProdutos.Open();
 
   FDQProdutos.First;
@@ -112,6 +125,7 @@ begin
     vProdutos.codigo := FDQProdutos.FieldByName('codigo').AsInteger;
     vProdutos.nome := FDQProdutos.FieldByName('nome').AsString;
     vProdutos.preco := FDQProdutos.FieldByName('preco').AsFloat;
+    vProdutos.estoque := FDQProdutos.FieldByName('estoque').AsInteger;
 
     insereProdutonaLista(vProdutos);
 
@@ -131,6 +145,8 @@ begin
     TListItemText(Objects.FindDrawable('txtNomeProduto')).Text := produto.nome;
     TListItemText(Objects.FindDrawable('txtPrecoProduto')).Text :=
       FloatToStr(produto.preco);
+    TListItemText(Objects.FindDrawable('txtEstoqueProduto')).Text :=
+      IntToStr(produto.estoque);
   end;
 
 end;
@@ -154,6 +170,7 @@ begin
   edt_Codigo_edicao.Text := IntToStr(vProduto.codigo);
   edt_nome_edicao.Text := vProduto.nome;
   edt_preco_edicao.Text := FloatToStr(vProduto.preco);
+  edt_Estoque_edicao.Text := IntToStr(vProduto.estoque);
 
   TabControl1.TabIndex := 2;
 
@@ -167,6 +184,22 @@ end;
 procedure TfrmProdutos.SpeedButton2Click(Sender: TObject);
 begin
   TabControl1.TabIndex := 0;
+end;
+
+procedure TfrmProdutos.btnDeletarClick(Sender: TObject);
+var
+  id_produto: Integer;
+begin
+
+  id_produto := StrToInt(edt_Codigo_edicao.Text);
+
+  deletaProduto(id_produto);
+
+  ShowMessage('Produto deletado com sucesso.');
+
+  TabControl1.TabIndex := 0;
+
+  atualizaProdutosdoBanco;
 end;
 
 procedure TfrmProdutos.btnInserirProdutoClick(Sender: TObject);
@@ -191,6 +224,7 @@ begin
   vProduto.codigo := StrToInt(edt_Codigo.Text);
   vProduto.nome := edt_Nome.Text;
   vProduto.preco := StrToFloat(edt_Preco.Text);
+  vProduto.estoque := StrToInt(edt_Estoque.Text);
 
   // Chamar procedimento para inserir o produto no banco
   insereProdutoBanco(vProduto);
@@ -205,6 +239,7 @@ begin
   vProduto.codigo := StrToInt(edt_Codigo_edicao.Text);
   vProduto.nome := edt_nome_edicao.Text;
   vProduto.preco := StrToFloat(edt_preco_edicao.Text);
+  vProduto.estoque := StrToInt(edt_Estoque_edicao.Text);
 
   editaProdutoBanco(vProduto);
 
@@ -220,12 +255,14 @@ begin
   FDQProdutos.SQL.Clear;
   FDQProdutos.SQL.Add('update produtos set ');
   FDQProdutos.SQL.Add('   nome = :nome, ');
-  FDQProdutos.SQL.Add('   preco = :preco ');
+  FDQProdutos.SQL.Add('   preco = :preco, ');
+  FDQProdutos.SQL.Add('   estoque = :estoque ');
   FDQProdutos.SQL.Add('where codigo = :codigo');
 
   FDQProdutos.ParamByName('codigo').AsInteger := produto.codigo;
   FDQProdutos.ParamByName('nome').AsString := produto.nome;
   FDQProdutos.ParamByName('preco').AsFloat := produto.preco;
+  FDQProdutos.ParamByName('estoque').AsInteger := produto.estoque;
 
   FDQProdutos.ExecSQL;
 end;
@@ -248,11 +285,12 @@ procedure TfrmProdutos.insereProdutoBanco(produto: TProdutos);
 begin
   FDQProdutos.Close;
   FDQProdutos.SQL.Clear;
-  FDQProdutos.SQL.Add('INSERT INTO PRODUTOS (CODIGO, NOME, PRECO)');
-  FDQProdutos.SQL.Add(' VALUES (:CODIGO, :NOME, :PRECO)');
+  FDQProdutos.SQL.Add('INSERT INTO PRODUTOS (CODIGO, NOME, PRECO, ESTOQUE)');
+  FDQProdutos.SQL.Add(' VALUES (:CODIGO, :NOME, :PRECO, :ESTOQUE)');
   FDQProdutos.ParamByName('codigo').AsInteger := produto.codigo;
   FDQProdutos.ParamByName('nome').AsString := produto.nome;
   FDQProdutos.ParamByName('preco').AsFloat := produto.preco;
+  FDQProdutos.ParamByName('estoque').AsInteger := produto.estoque;
   FDQProdutos.ExecSQL;
 end;
 
@@ -272,6 +310,7 @@ begin
   vProduto.codigo := id_produto;
   vProduto.nome := FDQProdutos.FieldByName('nome').AsString;
   vProduto.preco := FDQProdutos.FieldByName('preco').AsFloat;
+  vProduto.estoque := FDQProdutos.FieldByName('estoque').AsInteger;
 
   Result := vProduto;
 

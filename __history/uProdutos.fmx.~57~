@@ -13,7 +13,7 @@ object frmProdutos: TfrmProdutos
     Size.Width = 273.000000000000000000
     Size.Height = 480.000000000000000000
     Size.PlatformDefault = False
-    TabIndex = 2
+    TabIndex = 0
     TabOrder = 0
     TabPosition = None
     Sizes = (
@@ -27,7 +27,7 @@ object frmProdutos: TfrmProdutos
       CustomIcon = <
         item
         end>
-      IsSelected = False
+      IsSelected = True
       Size.Width = 8.000000000000000000
       Size.Height = 8.000000000000000000
       Size.PlatformDefault = False
@@ -121,9 +121,9 @@ object frmProdutos: TfrmProdutos
             item
               AppearanceObjectName = 'txtNomeProduto'
               AppearanceClassName = 'TTextObjectAppearance'
-              Appearance.Width = 136.000000000000000000
+              Appearance.Width = 113.000000000000000000
               Appearance.Height = 33.000000000000000000
-              Appearance.PlaceOffset.X = 70.000000000000000000
+              Appearance.PlaceOffset.X = 54.000000000000000000
               Appearance.PlaceOffset.Y = 8.000000000000000000
             end
             item
@@ -131,15 +131,23 @@ object frmProdutos: TfrmProdutos
               AppearanceClassName = 'TTextObjectAppearance'
               Appearance.Width = 49.000000000000000000
               Appearance.Height = 36.000000000000000000
-              Appearance.PlaceOffset.X = 6.000000000000000000
+              Appearance.PlaceOffset.X = -2.000000000000000000
               Appearance.PlaceOffset.Y = 8.000000000000000000
             end
             item
               AppearanceObjectName = 'txtPrecoProduto'
               AppearanceClassName = 'TTextObjectAppearance'
-              Appearance.Width = 15.000000000000000000
+              Appearance.Width = 23.000000000000000000
               Appearance.Height = 20.000000000000000000
-              Appearance.PlaceOffset.X = 224.000000000000000000
+              Appearance.PlaceOffset.X = 176.000000000000000000
+              Appearance.PlaceOffset.Y = 16.000000000000000000
+            end
+            item
+              AppearanceObjectName = 'txtEstoqueProduto'
+              AppearanceClassName = 'TTextObjectAppearance'
+              Appearance.Width = 23.000000000000000000
+              Appearance.Height = 20.000000000000000000
+              Appearance.PlaceOffset.X = 216.000000000000000000
               Appearance.PlaceOffset.Y = 16.000000000000000000
             end>
           ItemAppearanceObjects.ItemEditObjects.ObjectsCollection = <
@@ -277,7 +285,7 @@ object frmProdutos: TfrmProdutos
       CustomIcon = <
         item
         end>
-      IsSelected = True
+      IsSelected = False
       Size.Width = 8.000000000000000000
       Size.Height = 8.000000000000000000
       Size.PlatformDefault = False
@@ -410,6 +418,7 @@ object frmProdutos: TfrmProdutos
           Size.PlatformDefault = False
           TabOrder = 7
           Text = 'Deletar'
+          OnClick = btnDeletarClick
         end
       end
     end

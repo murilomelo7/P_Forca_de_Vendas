@@ -121,9 +121,9 @@ object frmProdutos: TfrmProdutos
             item
               AppearanceObjectName = 'txtNomeProduto'
               AppearanceClassName = 'TTextObjectAppearance'
-              Appearance.Width = 136.000000000000000000
+              Appearance.Width = 113.000000000000000000
               Appearance.Height = 33.000000000000000000
-              Appearance.PlaceOffset.X = 70.000000000000000000
+              Appearance.PlaceOffset.X = 54.000000000000000000
               Appearance.PlaceOffset.Y = 8.000000000000000000
             end
             item
@@ -131,16 +131,23 @@ object frmProdutos: TfrmProdutos
               AppearanceClassName = 'TTextObjectAppearance'
               Appearance.Width = 49.000000000000000000
               Appearance.Height = 36.000000000000000000
-              Appearance.PlaceOffset.X = 6.000000000000000000
+              Appearance.PlaceOffset.X = -2.000000000000000000
               Appearance.PlaceOffset.Y = 8.000000000000000000
             end
             item
               AppearanceObjectName = 'txtPrecoProduto'
               AppearanceClassName = 'TTextObjectAppearance'
-              Appearance.Width = 15.000000000000000000
+              Appearance.Width = 23.000000000000000000
               Appearance.Height = 20.000000000000000000
-              Appearance.PlaceOffset.X = 224.000000000000000000
+              Appearance.PlaceOffset.X = 176.000000000000000000
               Appearance.PlaceOffset.Y = 16.000000000000000000
+            end
+            item
+              AppearanceObjectName = 'txtEstoqueProduto'
+              AppearanceClassName = 'TTextObjectAppearance'
+              Appearance.Width = 31.000000000000000000
+              Appearance.Height = -187.000000000000000000
+              Appearance.PlaceOffset.X = 208.000000000000000000
             end>
           ItemAppearanceObjects.ItemEditObjects.ObjectsCollection = <
             item
@@ -395,6 +402,7 @@ object frmProdutos: TfrmProdutos
           Size.PlatformDefault = False
           TabOrder = 6
           Text = 'Salvar'
+          OnClick = btn_salvar_edicaClick
         end
         object btnDeletar: TButton
           Align = Top
@@ -409,6 +417,7 @@ object frmProdutos: TfrmProdutos
           Size.PlatformDefault = False
           TabOrder = 7
           Text = 'Deletar'
+          OnClick = btnDeletarClick
         end
       end
     end

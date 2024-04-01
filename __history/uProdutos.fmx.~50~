@@ -147,6 +147,7 @@ object frmProdutos: TfrmProdutos
               AppearanceObjectName = 'Text1'
               AppearanceClassName = 'TTextObjectAppearance'
             end>
+          OnItemClickEx = ListViewProdutosItemClickEx
         end
       end
     end
@@ -394,6 +395,7 @@ object frmProdutos: TfrmProdutos
           Size.PlatformDefault = False
           TabOrder = 6
           Text = 'Salvar'
+          OnClick = btn_salvar_edicaClick
         end
         object btnDeletar: TButton
           Align = Top
@@ -408,6 +410,7 @@ object frmProdutos: TfrmProdutos
           Size.PlatformDefault = False
           TabOrder = 7
           Text = 'Deletar'
+          OnClick = btnDeletarClick
         end
       end
     end
