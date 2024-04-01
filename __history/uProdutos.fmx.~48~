@@ -107,12 +107,11 @@ object frmProdutos: TfrmProdutos
         Size.Height = 399.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 3
-        object ListView1: TListView
+        object ListViewProdutos: TListView
           ItemAppearanceClassName = 'TDynamicAppearance'
           ItemEditAppearanceClassName = 'TDynamicAppearance'
           HeaderAppearanceClassName = 'TListHeaderObjects'
           FooterAppearanceClassName = 'TListHeaderObjects'
-          EditMode = True
           Align = Client
           Size.Width = 273.000000000000000000
           Size.Height = 399.000000000000000000
@@ -138,9 +137,9 @@ object frmProdutos: TfrmProdutos
             item
               AppearanceObjectName = 'txtPrecoProduto'
               AppearanceClassName = 'TTextObjectAppearance'
-              Appearance.Width = 25.000000000000000000
+              Appearance.Width = 15.000000000000000000
               Appearance.Height = 20.000000000000000000
-              Appearance.PlaceOffset.X = 214.000000000000000000
+              Appearance.PlaceOffset.X = 224.000000000000000000
               Appearance.PlaceOffset.Y = 16.000000000000000000
             end>
           ItemAppearanceObjects.ItemEditObjects.ObjectsCollection = <
@@ -148,7 +147,7 @@ object frmProdutos: TfrmProdutos
               AppearanceObjectName = 'Text1'
               AppearanceClassName = 'TTextObjectAppearance'
             end>
-          OnItemClickEx = ListView1ItemClickEx
+          OnItemClickEx = ListViewProdutosItemClickEx
         end
       end
     end
@@ -396,6 +395,7 @@ object frmProdutos: TfrmProdutos
           Size.PlatformDefault = False
           TabOrder = 6
           Text = 'Salvar'
+          OnClick = btn_salvar_edicaClick
         end
         object btnDeletar: TButton
           Align = Top

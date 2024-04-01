@@ -65,6 +65,7 @@ type
     ListViewProdutos: TListView;
     procedure atualizaProdutosdoBanco();
     procedure insereProdutonaLista(produto: TProdutos);
+    procedure editaProdutoBanco(produto: TProdutos);
     procedure insereProdutoBanco(produto: TProdutos);
     procedure btn_SalvarClick(Sender: TObject);
     procedure btnInserirProdutoClick(Sender: TObject);
@@ -72,9 +73,11 @@ type
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
     procedure btnPesquisarClick(Sender: TObject);
-    procedure ListView1ItemClickEx(const Sender: TObject; ItemIndex: Integer;
-      const LocalClickPos: TPointF; const ItemObject: TListItemDrawable);
+    procedure ListViewProdutosItemClickEx(const Sender: TObject;
+      ItemIndex: Integer; const LocalClickPos: TPointF;
+      const ItemObject: TListItemDrawable);
     function buscarProdutonoBanco(id_produto: Integer): TProdutos;
+    procedure btn_salvar_edicaClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -100,23 +103,9 @@ begin
 
   FDQProdutos.First;
 
+  ListViewProdutos.Items.Clear;
 
-
-  // ListViewProdutos.Items.Clear;
-  //
-  // while not FDQProdutos.Eof do
-  // begin
-  // // Atribua diretamente aos campos do registro
-  // vProdutos.codigo := FDQProdutos.FieldByName('codigo').AsInteger;
-  // vProdutos.nome := FDQProdutos.FieldByName('nome').AsString;
-  // vProdutos.preco := FDQProdutos.FieldByName('preco').AsFloat;
-  //
-  // insereProdutonaLista(vProdutos);
-  //
-  // FDQProdutos.Next;
-  // end;
-
-  if not FDQProdutos.Eof then
+  while not FDQProdutos.Eof do
   begin
     // Atribua diretamente aos campos do registro
     vProdutos.codigo := FDQProdutos.FieldByName('codigo').AsInteger;
@@ -132,19 +121,20 @@ end;
 
 procedure TfrmProdutos.insereProdutonaLista(produto: TProdutos);
 begin
-        ListViewProdutos.Items.Clear
   // Insere cliente por cliente na lista
   with ListViewProdutos.Items.Add do
   begin
 
-    TListItemText(Objects.FindDrawable('txtCodigoProduto')).Text := 'asd';
-    TListItemText(Objects.FindDrawable('txtNomeProduto')).Text := 'asd';
-    TListItemText(Objects.FindDrawable('txtPrecoProduto')).Text := 'asd';
+    TListItemText(Objects.FindDrawable('txtCodigoProduto')).Text :=
+      IntToStr(produto.codigo);
+    TListItemText(Objects.FindDrawable('txtNomeProduto')).Text := produto.nome;
+    TListItemText(Objects.FindDrawable('txtPrecoProduto')).Text :=
+      FloatToStr(produto.preco);
   end;
 
 end;
 
-procedure TfrmProdutos.ListView1ItemClickEx(const Sender: TObject;
+procedure TfrmProdutos.ListViewProdutosItemClickEx(const Sender: TObject;
   ItemIndex: Integer; const LocalClickPos: TPointF;
   const ItemObject: TListItemDrawable);
 var
@@ -164,7 +154,7 @@ begin
   edt_nome_edicao.Text := vProduto.nome;
   edt_preco_edicao.Text := FloatToStr(vProduto.preco);
 
-  TabControl1.TabIndex := 1;
+  TabControl1.TabIndex := 2;
 
 end;
 
@@ -204,6 +194,39 @@ begin
   // Chamar procedimento para inserir o produto no banco
   insereProdutoBanco(vProduto);
   TabControl1.TabIndex := 0;
+end;
+
+procedure TfrmProdutos.btn_salvar_edicaClick(Sender: TObject);
+var
+  vProduto: TProdutos;
+begin
+  // Buscar os dados dos edits e salvar no banco
+  vProduto.codigo := StrToInt(edt_Codigo_edicao.Text);
+  vProduto.nome := edt_nome_edicao.Text;
+  vProduto.preco := StrToFloat(edt_preco_edicao.Text);
+
+  editaProdutoBanco(vProduto);
+
+  ShowMessage('Cliente alterado com sucesso.');
+
+  TabControl1.TabIndex := 0;
+  atualizaProdutosdoBanco;
+end;
+
+procedure TfrmProdutos.editaProdutoBanco(produto: TProdutos);
+begin
+  FDQProdutos.Close;
+  FDQProdutos.SQL.Clear;
+  FDQProdutos.SQL.Add('update clientes set ');
+  FDQProdutos.SQL.Add('   nome = :nome, ');
+  FDQProdutos.SQL.Add('   preco = :preco ');
+  FDQProdutos.SQL.Add('where codigo = :codigo');
+
+  FDQProdutos.ParamByName('codigo').AsInteger := produto.codigo;
+  FDQProdutos.ParamByName('nome').AsString := produto.nome;
+  FDQProdutos.ParamByName('preco').AsFloat := produto.preco;
+
+  FDQProdutos.ExecSQL;
 end;
 
 procedure TfrmProdutos.insereProdutoBanco(produto: TProdutos);

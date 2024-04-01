@@ -13,7 +13,7 @@ object frmProdutos: TfrmProdutos
     Size.Width = 273.000000000000000000
     Size.Height = 480.000000000000000000
     Size.PlatformDefault = False
-    TabIndex = 0
+    TabIndex = 2
     TabOrder = 0
     TabPosition = None
     Sizes = (
@@ -27,7 +27,7 @@ object frmProdutos: TfrmProdutos
       CustomIcon = <
         item
         end>
-      IsSelected = True
+      IsSelected = False
       Size.Width = 8.000000000000000000
       Size.Height = 8.000000000000000000
       Size.PlatformDefault = False
@@ -147,6 +147,7 @@ object frmProdutos: TfrmProdutos
               AppearanceObjectName = 'Text1'
               AppearanceClassName = 'TTextObjectAppearance'
             end>
+          OnItemClickEx = ListViewProdutosItemClickEx
         end
       end
     end
@@ -276,7 +277,7 @@ object frmProdutos: TfrmProdutos
       CustomIcon = <
         item
         end>
-      IsSelected = False
+      IsSelected = True
       Size.Width = 8.000000000000000000
       Size.Height = 8.000000000000000000
       Size.PlatformDefault = False
@@ -394,6 +395,7 @@ object frmProdutos: TfrmProdutos
           Size.PlatformDefault = False
           TabOrder = 6
           Text = 'Salvar'
+          OnClick = btn_salvar_edicaClick
         end
         object btnDeletar: TButton
           Align = Top
@@ -408,6 +410,7 @@ object frmProdutos: TfrmProdutos
           Size.PlatformDefault = False
           TabOrder = 7
           Text = 'Deletar'
+          OnClick = btnDeletarClick
         end
       end
     end
